@@ -1,4 +1,4 @@
-**Naruto Escape**
+# **Naruto Escape**
 
 This is simple 2D game made with OpenGL.
 
