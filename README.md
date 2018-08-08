@@ -1,4 +1,6 @@
+#Naruto Escape
 
+This is simple 2D game made with OpenGL.
 
 How to install OpenGL
 
