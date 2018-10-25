@@ -22,4 +22,7 @@ This is simple 2D game made with OpenGL.
 
     make
     make clean
+    
+## How to run
+    
     ./tp1
