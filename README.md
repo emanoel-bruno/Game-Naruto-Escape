@@ -1,4 +1,4 @@
-# **Naruto Escape**
+# Game Naruto Escape
 
 This is simple 2D game made with OpenGL.
 
@@ -18,7 +18,7 @@ This is simple 2D game made with OpenGL.
     sudo apt-get install libncurses5-dev libncursesw5-dev 
 
 
-## How to compile ##
+## How to compile 
 
     make
     make clean
