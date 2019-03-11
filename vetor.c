@@ -1,1 +1,0 @@
-#include"vetor.h"
