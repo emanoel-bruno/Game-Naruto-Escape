@@ -29,7 +29,7 @@ sudo pacman -Syu freealut
 
 
 ## How to compile 
-
+    make clean-all
     make
     make clean
     
