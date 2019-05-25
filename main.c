@@ -11,6 +11,7 @@
 #include"objeto.h"
 #include"botao.h"
 #include"vetor.h"
+
 int LARGURA_TELA=420;
 int modo=1;
 int telaM=0;
@@ -43,8 +44,10 @@ int NUMERO_PASSAROS=10;
 int w1;
 int h1;
 int flag=0;
+
 personagem p1;
 barra b1;
+
 GLuint texturaCeu;
 GLuint texturaSolo;
 GLuint texturaBotao1;
@@ -72,22 +75,28 @@ GLuint texturaShuriken2;
 GLuint texturaShuriken11;
 GLuint texturaShuriken22;
 GLuint texturaPassaros;
+
 float porcentagemX;
 float porcentagemY;
+
 objeto o[50];
+objeto bird[50];
+
 botao botao1;
 botao botao2;
 botao botao3;
 botao botao4;
-objeto bird[50];
+
 v mouse;
 v mouse2;
+
 void gera_posisoes_birds(int numero_de_birds){
     int i=0;
     for(i=0;i<numero_de_birds;i++){
         gera_cordendas_dos_passaros(&bird[i],velocidade_objeto,30);
     }
 }
+
 v converte_cordenadas_mouse(v mouse){
     porcentagemX=mouse.x/w1;
     porcentagemY=mouse.y/h1;
@@ -101,6 +110,7 @@ v converte_cordenadas_mouse(v mouse){
     mouse.y=meia_altura_tela-parte_andaday;
     return mouse;
 }
+
 void click_mouse(int butom,int state,int x, int y){
     mouse.x=x;
     mouse.y=y;
@@ -411,33 +421,33 @@ void init(void){
     glClearColor (1, 1, 1, 0);
     gera_posisoes_birds(NUMERO_PASSAROS);
 
-    loadTexture(&texturaCeu, "ceu.png");
-    loadTexture(&texturaTela, "fundo_inicio.png");
-    loadTexture(&texturaTelap, "fundo_iniciop.png");
-    loadTexture(&texturaTela3, "dead.png");
-    loadTexture(&texturaTela4, ".venceu.png");
-    loadTexture(&texturaSolo, "solo.png");
-    loadTexture(&texturaBixo, "naruto_inicial2.png");
-    loadTexture(&texturaBixo2, "super_naruto.png");
-    loadTexture(&texturaBixoAndano, "naruto_andano.png");
-    loadTexture(&texturaBixo2Andano, "naruto_andano2.png");
-    loadTexture(&texturaCoracao, "coracao.png");
-    loadTexture(&texturaShuriken, "shuriken1.png");
-    loadTexture(&texturaShuriken2, "shuriken2.png");
-    loadTexture(&texturaShuriken11, "shuriken1.2.png");
-    loadTexture(&texturaShuriken22, "shuriken2.2.png");
-    loadTexture(&texturaPassaros, "birds.png");
-    loadTexture(&texturaBotao1, "botao1.png");
-    loadTexture(&texturaBotao2, "botao3.png");
-    loadTexture(&texturaBotao3, "botao2.png");
-    loadTexture(&texturaBotao4, "botao4.png");
-    loadTexture(&texturaBotao5, "botao5.png");
-    loadTexture(&texturaBotao6, "botao6.png");
-    loadTexture(&texturaBotao7, "botao7.png");
-    loadTexture(&texturaTela2, "fundo_inicio22.png");
-    loadTexture(&texturaTelaM1, "tela_fundoM0.png");
-    loadTexture(&texturaTelaM2, "tela_fundoM1.png");
-    loadTexture(&texturaTelaM3, "tela_fundoM2.png");
+    loadTexture(&texturaCeu, "img/ceu.png");
+    loadTexture(&texturaTela, "img/fundo_inicio.png");
+    loadTexture(&texturaTelap, "img/fundo_iniciop.png");
+    loadTexture(&texturaTela3, "img/dead.png");
+    loadTexture(&texturaTela4, "img/venceu.png");
+    loadTexture(&texturaSolo, "img/solo.png");
+    loadTexture(&texturaBixo, "img/naruto_inicial2.png");
+    loadTexture(&texturaBixo2, "img/super_naruto.png");
+    loadTexture(&texturaBixoAndano, "img/naruto_andano.png");
+    loadTexture(&texturaBixo2Andano, "img/naruto_andano2.png");
+    loadTexture(&texturaCoracao, "img/coracao.png");
+    loadTexture(&texturaShuriken, "img/shuriken1.png");
+    loadTexture(&texturaShuriken2, "img/shuriken2.png");
+    loadTexture(&texturaShuriken11, "img/shuriken1.2.png");
+    loadTexture(&texturaShuriken22, "img/shuriken2.2.png");
+    loadTexture(&texturaPassaros, "img/birds.png");
+    loadTexture(&texturaBotao1, "img/botao1.png");
+    loadTexture(&texturaBotao2, "img/botao3.png");
+    loadTexture(&texturaBotao3, "img/botao2.png");
+    loadTexture(&texturaBotao4, "img/botao4.png");
+    loadTexture(&texturaBotao5, "img/botao5.png");
+    loadTexture(&texturaBotao6, "img/botao6.png");
+    loadTexture(&texturaBotao7, "img/botao7.png");
+    loadTexture(&texturaTela2, "img/fundo_inicio22.png");
+    loadTexture(&texturaTelaM1, "img/tela_fundoM0.png");
+    loadTexture(&texturaTelaM2, "img/tela_fundoM1.png");
+    loadTexture(&texturaTelaM3, "img/tela_fundoM2.png");
 }
 
 void inicializa_personagem(){
@@ -456,9 +466,11 @@ void inicializa_personagem(){
     p1.y_minimo=p1.y;
     p1.y_maximo=p1.y+p1.comprimento;
 }
+
 void inicializa_barra(){
     b1=calcula_dimencoes(b1,TEMPO,TEMPO_MAX,LARGURA_TELA,ALTURA_TELA);
 }
+
 void textura_personagem(){
     glColor4f(1,1,1,1);
     int contador=CONTADOR_FRAMES%2;
@@ -599,6 +611,7 @@ void textura_personagem(){
         }
         glDisable(GL_TEXTURE_2D);
     }
+
     if(tipo_personagem==1){
         glEnable(GL_TEXTURE_2D);
         glBindTexture(GL_TEXTURE_2D, texturaBixo2);
@@ -737,6 +750,7 @@ void textura_personagem(){
         glDisable(GL_TEXTURE_2D);
     }
 }
+
 void textura_sprite_bird(objeto *bird){
     glColor4f(1,1,1,1);
     glEnable(GL_TEXTURE_2D);
@@ -928,6 +942,7 @@ void textura_sprite_bird(objeto *bird){
     }
     glDisable(GL_TEXTURE_2D);
 }
+
 void desenha_cenario(){
     float altura_ceu,altura_terra;
     altura_terra=55;
@@ -978,6 +993,7 @@ void desenha_cenario(){
     //textura_sprite();
 
 }
+
 void desenha_textura_coracao(int x,int y,int tamanho){
     glColor4f(1,1,1,1);
     glEnable(GL_TEXTURE_2D);
@@ -994,6 +1010,7 @@ void desenha_textura_coracao(int x,int y,int tamanho){
     glEnd();
     glDisable(GL_TEXTURE_2D);
 }
+
 void desenha_textura_objeto(objeto o){
     glColor4f(1,1,1,1);
     glEnable(GL_TEXTURE_2D);
@@ -1026,44 +1043,7 @@ void desenha_textura_objeto(objeto o){
     glDisable(GL_TEXTURE_2D);
 
 }
-void atualiza(){
-    if(modo!=0){
-        glutPostRedisplay();
-     }
-     if(modo==0 && pausado==1){
-        glutPostRedisplay();
-     }
-    if(modo==0 && pausado==0){
-        if(p1.numero_de_vidas==0){
-            modo=3;
-        }
-        if(TEMPO==TEMPO_MAX && contador_de_vitoria==0){
-            modo=4;
-            contador_de_vitoria++;
-        }
-        CONTADOR_FRAMES++;
-        anguloDeRotacao += incrementoAngulo;
-        atualiza_frames_objetos();
-        atualiza_passaros();
-        atualiza_personagem();
-        gera_posisoes_objetos(NUMERO_DE_OBSTACULOS);
-        verifica_dano();
-        glutPostRedisplay();
-        if(CONTADOR_FRAMES%FPS==0){
-            TEMPO++;
-            b1=calcula_dimencoes(b1,TEMPO,TEMPO_MAX,LARGURA_TELA,ALTURA_TELA);
-        }
-        tempo_para_aumentar_dificuldade=FPS*fator_de_dificuldade*regulador_do_tempo_de_dificuldade;
-        //printf("fator de dificuladade %.2f e tempo pra muda %d\n",fator_de_dificuldade,tempo_para_aumentar_dificuldade);
-        if(CONTADOR_FRAMES%tempo_para_aumentar_dificuldade==0 && CONTADOR_FRAMES!=0){
-            fator_de_dificuldade++;
-            //NUMERO_DE_OBSTACULOS-=1;
-            if(regulador_do_tempo_de_dificuldade>2)
-                regulador_do_tempo_de_dificuldade-=2;
-        }
-    }
-    glutTimerFunc(INTERVALO_ENTRE_AS_FRAMES,atualiza, 0);
-}
+
 int  verifica_colisao(personagem p1,objeto o1){
     if(p1.y_maximo>=o1.y_minimo){
         if(p1.x_minimo>=o1.x_minimo && p1.x_minimo<=o1.x_maximo){
@@ -1078,80 +1058,7 @@ int  verifica_colisao(personagem p1,objeto o1){
     }
     return 0;
 }
-void redimensiona(int w, int h){
-    float razao = (float)h/w;
-    w1=w;
-    h1=h;
-    glViewport(0, 0, (GLsizei)w, (GLsizei)h);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(-w/2,w/2,-h/2,h/2, -1.0, 1.0);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-}
-void teclado(unsigned char key, int x, int y){
-   switch(key)
-   {
-      case 27:
-         exit(0);
-         break;
-      case 'a':
-          anda_esquerda=1;
-          break;
-      case 'w':
-          break;
-      case '+':
-          incrementoAngulo += 0.5;
-          break;
-      case '-':
-          incrementoAngulo -= 0.5;
-          break;
-      case 'd':
-          anda_direita=1;
-          break;
-      case 's':
-         break;
-      case ' ':
-          if(contador_impulso==0){
-            impulsu(&p1,anda_direita,anda_esquerda);
-          }
-          contador_impulso++;
-         break;
-      default:
-         break;
 
-   }
-}
-void teclado2(unsigned char key, int x, int y){
-   switch(key)
-   {
-      case 'a':
-            anda_esquerda=0;
-         break;
-      case 'w':
-         break;
-      case 'd':
-            anda_direita=0;
-         break;
-      case 's':
-         break;
-        case 'p':if(pausado==0){
-            pausado=1;
-          }
-          else{
-            pausado=0;
-          }
-         break;
-         case ' ':
-          if(contador_impulso!=0){
-            contador_impulso=0;
-          }
-
-      default:
-         break;
-
-   }
-}
 void atualiza_frames_objetos(){
     int i;
     for(i=0;i<NUMERO_DE_OBSTACULOS;i++){
@@ -1162,6 +1069,7 @@ void atualiza_frames_objetos(){
         o[i].y_maximo=o[i].y+o[i].tamanho;
     }
 }
+
 void atualiza_passaros(){
     int i;
     for(i=0;i<NUMERO_PASSAROS;i++){
@@ -1178,6 +1086,20 @@ void atualiza_passaros(){
         }
     }
 }
+
+void gera_posisoes_objetos(int numero_de_objetos){
+    int i=0;
+    int incremento_tamanho=1;
+    int fator_corretor_tempo=5;
+    int numero_de_frames_para_aumentar_tamanho=FPS*fator_corretor_tempo/fator_de_dificuldade;
+    if(CONTADOR_FRAMES%numero_de_frames_para_aumentar_tamanho==0 && CONTADOR_FRAMES!=0){
+        tamanho_objeto=tamanho_objeto+incremento_tamanho;
+    }
+    for(i=0;i<numero_de_objetos;i++){
+        gera_cordendas_dos_objetos(&o[i],velocidade_objeto,tamanho_objeto,fator_de_dificuldade);
+    }
+}
+
 void verifica_dano(){
     int i;
     int flag;
@@ -1192,18 +1114,28 @@ void verifica_dano(){
         }
     }
 }
-void gera_posisoes_objetos(int numero_de_objetos){
-    int i=0;
-    int incremento_tamanho=1;
-    int fator_corretor_tempo=5;
-    int numero_de_frames_para_aumentar_tamanho=FPS*fator_corretor_tempo/fator_de_dificuldade;
-    if(CONTADOR_FRAMES%numero_de_frames_para_aumentar_tamanho==0 && CONTADOR_FRAMES!=0){
-        tamanho_objeto=tamanho_objeto+incremento_tamanho;
-    }
-    for(i=0;i<numero_de_objetos;i++){
-        gera_cordendas_dos_objetos(&o[i],velocidade_objeto,tamanho_objeto,fator_de_dificuldade);
+
+void atualiza_personagem(){
+    andou_direita(&p1,anda_direita);
+    andou_esquerda(&p1,anda_esquerda);
+    p1.x_minimo=p1.x;
+    p1.x_maximo=p1.x+p1.largura;
+    p1.y_minimo=p1.y;
+    p1.y_maximo=p1.y+p1.comprimento;
+    p1.diferenca_altura_largura=p1.comprimento-p1.largura;
+    if(p1.status==0){
+        if(p1.numero_frames%FPS==0)
+            p1.tempo+=1;
+        p1.numero_frames++;
+        if(p1.tempo==3){
+            p1.tempo=0;
+            p1.status=1;
+            p1.numero_frames=0;
+        }
     }
 }
+
+
 void desenha_jogo(void){
 
     glClear(GL_COLOR_BUFFER_BIT);
@@ -1242,25 +1174,7 @@ void desenha_jogo(void){
     }
     glutSwapBuffers();
 }
-void atualiza_personagem(){
-    andou_direita(&p1,anda_direita);
-    andou_esquerda(&p1,anda_esquerda);
-    p1.x_minimo=p1.x;
-    p1.x_maximo=p1.x+p1.largura;
-    p1.y_minimo=p1.y;
-    p1.y_maximo=p1.y+p1.comprimento;
-    p1.diferenca_altura_largura=p1.comprimento-p1.largura;
-    if(p1.status==0){
-        if(p1.numero_frames%FPS==0)
-            p1.tempo+=1;
-        p1.numero_frames++;
-        if(p1.tempo==3){
-            p1.tempo=0;
-            p1.status=1;
-            p1.numero_frames=0;
-        }
-    }
-}
+
 void desenha(){
     if(modo==0){
         if(pausado==0){
@@ -1286,6 +1200,123 @@ void desenha(){
         desenha_menu6();
     }
 }
+
+void atualiza(){
+    if(modo!=0){
+        glutPostRedisplay();
+     }
+     if(modo==0 && pausado==1){
+        glutPostRedisplay();
+     }
+    if(modo==0 && pausado==0){
+        if(p1.numero_de_vidas==0){
+            modo=3;
+        }
+        if(TEMPO==TEMPO_MAX && contador_de_vitoria==0){
+            modo=4;
+            contador_de_vitoria++;
+        }
+        CONTADOR_FRAMES++;
+        anguloDeRotacao += incrementoAngulo;
+        atualiza_frames_objetos();
+        atualiza_passaros();
+        atualiza_personagem();
+        gera_posisoes_objetos(NUMERO_DE_OBSTACULOS);
+        verifica_dano();
+        glutPostRedisplay();
+        if(CONTADOR_FRAMES%FPS==0){
+            TEMPO++;
+            b1=calcula_dimencoes(b1,TEMPO,TEMPO_MAX,LARGURA_TELA,ALTURA_TELA);
+        }
+        tempo_para_aumentar_dificuldade=FPS*fator_de_dificuldade*regulador_do_tempo_de_dificuldade;
+        //printf("fator de dificuladade %.2f e tempo pra muda %d\n",fator_de_dificuldade,tempo_para_aumentar_dificuldade);
+        if(CONTADOR_FRAMES%tempo_para_aumentar_dificuldade==0 && CONTADOR_FRAMES!=0){
+            fator_de_dificuldade++;
+            //NUMERO_DE_OBSTACULOS-=1;
+            if(regulador_do_tempo_de_dificuldade>2)
+                regulador_do_tempo_de_dificuldade-=2;
+        }
+    }
+    glutTimerFunc(INTERVALO_ENTRE_AS_FRAMES,atualiza, 0);
+}
+
+void redimensiona(int w, int h){
+    float razao = (float)h/w;
+    w1=w;
+    h1=h;
+    glViewport(0, 0, (GLsizei)w, (GLsizei)h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(-w/2,w/2,-h/2,h/2, -1.0, 1.0);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+}
+
+void teclado(unsigned char key, int x, int y){
+   switch(key)
+   {
+      case 27:
+         exit(0);
+         break;
+      case 'a':
+          anda_esquerda=1;
+          break;
+      case 'w':
+          break;
+      case '+':
+          incrementoAngulo += 0.5;
+          break;
+      case '-':
+          incrementoAngulo -= 0.5;
+          break;
+      case 'd':
+          anda_direita=1;
+          break;
+      case 's':
+         break;
+      case ' ':
+          if(contador_impulso==0){
+            impulsu(&p1,anda_direita,anda_esquerda);
+          }
+          contador_impulso++;
+         break;
+      default:
+         break;
+
+   }
+}
+
+void teclado2(unsigned char key, int x, int y){
+   switch(key)
+   {
+      case 'a':
+            anda_esquerda=0;
+         break;
+      case 'w':
+         break;
+      case 'd':
+            anda_direita=0;
+         break;
+      case 's':
+         break;
+        case 'p':if(pausado==0){
+            pausado=1;
+          }
+          else{
+            pausado=0;
+          }
+         break;
+         case ' ':
+          if(contador_impulso!=0){
+            contador_impulso=0;
+          }
+
+      default:
+         break;
+
+   }
+}
+
 int main(int argc, char **argv){
     srand(time(0));
 

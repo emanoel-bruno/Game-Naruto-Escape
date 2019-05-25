@@ -5,10 +5,11 @@ LIBS    = -lglut -lGLU -lGL -lm -lSOIL
 CFLAGS  = -O3 -Wall
 
 
-all: tp1
+all: naruto-escape
  
-tp1: $(OBJECTS)
-	gcc -o tp1 $(OBJECTS) $(CFLAGS) $(LIBS)
+naruto-escape: $(OBJECTS)
+	gcc -o naruto-escape $(OBJECTS) $(CFLAGS) $(LIBS)
+	rm -rf *.o
 
 objeto.o: objeto.c objeto.h
 	gcc -o objeto.o -c objeto.c $(LIBS) -nostartfiles
@@ -21,8 +22,7 @@ barra.o: barra.c barra.h
 
 main.o: main.c $(HEADERS)
 	gcc -o main.o -c main.c  $(LIBS)
-clean:
-	rm -rf *.o
-clean-all: 
-	rm -rf tp1 *.o
+
+clean: 
+	rm -rf naruto-escape *.o
 

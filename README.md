@@ -26,13 +26,12 @@ This is simple 2D game made with OpenGL.
 
 
 ## How to compile 
-    make clean-all
-    make
     make clean
+    make
     
 ## How to play
     
-    ./tp1
+    ./naruto-escape
     
 ## Authors
 
