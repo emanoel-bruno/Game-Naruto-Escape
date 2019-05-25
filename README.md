@@ -36,3 +36,13 @@ This is simple 2D game made with OpenGL.
 ## How to play
     
     ./tp1
+    
+## Authors
+
+* **Emanoel Bruno** - *Initial work* - [emanoel-bruno](https://github.com/emanoel-bruno)
+
+See also the list of [contributors](https://github.com/emanoel-bruno/Tips-Git/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the Apache License - see the [LICENSE](LICENSE.md) file for details
