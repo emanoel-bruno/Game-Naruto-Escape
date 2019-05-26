@@ -2,7 +2,7 @@
 
 This is simple 2D game made with OpenGL.
 
-## How to install OpenGL
+## How to install OpenGL on Debian based distros
 
     sudo apt-get install freeglut3 -y 
     sudo apt-get install freeglut3-dev -y 
@@ -18,7 +18,7 @@ This is simple 2D game made with OpenGL.
     sudo apt-get install libncurses5-dev libncursesw5-dev 
 
 
-## How to install OpenGL on Arch based distos
+## How to install OpenGL on Arch based distros
 
     sudo pacman -Syu soil glew freeglut
     sudo pacman -Syu openal sfml glm
